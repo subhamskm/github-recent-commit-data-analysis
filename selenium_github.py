@@ -12,7 +12,7 @@ for name in userhandles:
     d.get('https://www.github.com/'+name+'?tab=repositories')
     last=d.find_element_by_tag_name('relative-time').text
     print(last)
-    if last.split()[0]=='a':
+    if last.split()[0]=='a' or last.split()[0]=='an':
         num=1
     else:
         num=int(last.split()[0])
@@ -25,6 +25,8 @@ for name in userhandles:
         time=num*60*60
     elif last.split()[1]=='day' or last.split()[1]=='days':
         time=num*60*60*24
+    elif last.split()[1]=='week' or last.split()[1]=='weeks':
+        time=num*60*60*24*7
     elif last.split()[1]=='month' or last.split()[1]=='months':
         time=num*60*60*24*30
     elif last.split()[1]=='year' or last.split()[1]=='years':
